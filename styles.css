@@ -1,0 +1,155 @@
+/* Reset and Basic Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    color: #333;
+    background-image: url(../Images1/webthon1.webp);background-attachment: fixed;background-repeat: no-repeat;background-size: cover;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: black;
+    color: white;
+    padding: 1rem 0;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffd700;
+}
+
+/* Hero Section */
+.hero {
+    background: url('hero.jpg') center/cover no-repeat;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.cta-btn {
+    background-color: #ff5733;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.cta-btn:hover {
+    background-color: #c70039;
+}
+
+/* Skills Section */
+.skills {
+    color:black;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.skills-grid {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: slide-left 20s linear infinite;
+}
+
+.skill-card {
+    display: inline-block;
+    flex-shrink: 0;
+    margin-right: 20px; /* Adjust the spacing between cards */
+    width: 300px; /* Adjust card width if needed */
+    white-space: normal;
+}
+
+@keyframes slide-left {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.skill-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.skill-card h4 {
+    margin: 10px 0;
+}
+
+.trade-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    margin: 10px 0;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+}
+
+.trade-btn:hover {
+    background-color: #218838;
+}
+
+/* Footer Styles */
+.footer {
+    background-color:black;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    margin-top: 20px;
+}

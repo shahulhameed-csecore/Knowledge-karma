@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Skill Exchange Platform</title>
+    <link rel="stylesheet" href="skillcss.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="logo">KNOWLEDGE KARMA</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="../Web-Thon1/about us.html">About</a></li>
+                <li><a href="#" id="add-skill-btn" class="btn">Add Skill</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Exchange Skills, Learn Something New</h1>
+        <p>Join our community to swap skills and grow together!</p>
+    </section>
+
+    <!-- Search and Filter -->
+    <section id="skills" class="skills-section">
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search for a skill...">
+            <button onclick="searchSkills()">Search</button>
+        </div>
+
+        <div class="filter-container">
+            <select id="categoryFilter" onchange="filterByCategory()">
+                <option value="all">All Categories</option>
+                <option value="music">Music</option>
+                <option value="cooking">Cooking</option>
+                <option value="languages">Languages</option>
+                <option value="sports">Sports</option>
+            </select>
+        </div>
+
+        <div class="skills-grid" id="skillsGrid">
+            <!-- Skill Cards will be dynamically inserted here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Add Skill Modal -->
+    <div id="addSkillModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Add a Skill</h2>
+            <form id="add-skill-form">
+                <label for="skill-name">Skill Name</label>
+                <input type="text" id="skill-name" required>
+
+                <label for="skill-category">Category</label>
+                <select id="skill-category" required>
+                    <option value="music">Music</option>
+                    <option value="cooking">Cooking</option>
+                    <option value="languages">Languages</option>
+                    <option value="sports">Sports</option>
+                </select>
+
+                <label for="skill-description">Description</label>
+                <textarea id="skill-description" required></textarea>
+
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Skill Exchange Platform. All rights reserved.</p>
+    </footer>
+
+    <script src="skilljs.js"></script>
+</body>
+</html>

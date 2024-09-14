@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Exchange Scheduler</title>
+    <link rel="stylesheet" href="feedbackcss.css">
+</head>
+<body style="background-image: url(../Images1/webthon1.webp);background-repeat: no-repeat;background-size: cover;background-attachment: fixed;">
+    <h1>Skill Exchange Scheduler</h1>
+
+    <!-- Registration Form -->
+    <div id="user-form">
+        <h2>Register User</h2>
+        <form id="registration-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+            <label for="skills-offered">Skills Offered (comma-separated):</label>
+            <input type="text" id="skills-offered" required>
+            <label for="skills-wanted">Skills Wanted (comma-separated):</label>
+            <input type="text" id="skills-wanted" required>
+            <label for="availability">Availability (comma-separated days; e.g., Monday, Wednesday):</label>
+            <input type="text" id="availability" required>
+            <label for="time-slots">Time Slots (comma-separated; e.g., 10:00, 11:00):</label>
+            <input type="text" id="time-slots" required>
+            <button type="button" onclick="registerUser()">Register</button>
+        </form>
+    </div>
+
+    <!-- Skill Exchange Matches -->
+    <div id="matches">
+        <h2>Skill Exchange Matches</h2>
+        <table id="matches-table">
+            <thead>
+                <tr>
+                    <th>Learner</th>
+                    <th>Teacher</th>
+                    <th>Skill</th>
+                    <th>Available Times</th>
+                    <th>Feedback</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Matches will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Feedback Form -->
+    <div id="feedback-form">
+        <h2>Submit Feedback</h2>
+        <form id="feedback-form-content">
+            <label for="feedback-learner">Learner Name:</label>
+            <input type="text" id="feedback-learner" required>
+            <label for="feedback-teacher">Teacher Name:</label>
+            <input type="text" id="feedback-teacher" required>
+            <label for="rating">Rating:</label>
+            <div class="rating">
+                <input type="radio" id="star5" name="rating" value="5" required>
+                <label for="star5" class="star">&#9733;</label>
+                <input type="radio" id="star4" name="rating" value="4">
+                <label for="star4" class="star">&#9733;</label>
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3" class="star">&#9733;</label>
+                <input type="radio" id="star2" name="rating" value="2">
+                <label for="star2" class="star">&#9733;</label>
+                <input type="radio" id="star1" name="rating" value="1">
+                <label for="star1" class="star">&#9733;</label>
+            </div>
+            <label for="comment">Comment:</label>
+            <textarea id="comment" rows="4" required></textarea>
+            <button type="button" onclick="submitFeedback()">Submit Feedback</button>
+        </form>
+        <div id="feedback-message"></div>
+    </div>
+
+    <!-- Review Page -->
+    <div id="reviews">
+        <h2>Reviews</h2>
+        <label for="search">Search Reviews:</label>
+        <input type="text" id="search" oninput="filterReviews()">
+        <div id="reviews-list">
+            <!-- Reviews will be inserted here -->
+        </div>
+    </div>
+
+    <script src="feedbackjs.js"></script>
+</body>
+</html>

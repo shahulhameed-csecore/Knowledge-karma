@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Skill Exchange</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primary-color: #6c63ff;
+            --accent-color: #f9a826;
+            --light-color: #fff;
+            --dark-color: #222;
+            --gray-color: #f5f5f5;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--gray-color);
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        /* Skill Exchange Section */
+        .exchange-section {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 1.5rem;
+            background-color: var(--light-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--dark-color);
+        }
+
+        .exchange-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        /* Select Inputs */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            color: var(--dark-color);
+        }
+
+        .form-group select {
+            padding: 0.75rem;
+            border: 2px solid var(--gray-color);
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group select:focus {
+            border-color: var(--primary-color);
+        }
+
+        /* Buttons */
+        .submit-btn {
+            grid-column: span 2;
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 1rem;
+            border: none;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Exchange Details */
+        .exchange-details {
+            margin-top: 3rem;
+            display: none;
+        }
+
+        .exchange-details p {
+            font-size: 1.2rem;
+            color: var(--dark-color);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--light-color);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .modal-content h3 {
+            margin-bottom: 1rem;
+        }
+
+        .close-btn {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        .close-btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .exchange-form {
+                grid-template-columns: 1fr;
+            }
+
+            .submit-btn {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1>Skill Exchange Platform</h1>
+    </div>
+
+    <!-- Skill Exchange Section -->
+    <section class="exchange-section">
+        <h2>Propose a Skill Exchange</h2>
+        <form class="exchange-form" id="exchangeForm">
+            <!-- Your Skill -->
+            <div class="form-group">
+                <label for="yourSkill">Your Skill</label>
+                <select id="yourSkill" required>
+                    <option value="" disabled selected>Select your skill</option>
+                    <option value="Guitar Lessons">Guitar Lessons</option>
+                    <option value="Cooking">Cooking</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Photography">Photography</option>
+                    <option value="Yoga">Yoga</option>
+                </select>
+            </div>
+
+            <!-- Desired Skill -->
+            <div class="form-group">
+                <label for="desiredSkill">Skill You Want to Learn</label>
+                <select id="desiredSkill" required>
+                    <option value="" disabled selected>Select the skill you want to learn</option>
+                    <option value="Public Speaking">Public Speaking</option>
+                    <option value="Graphic Design">Graphic Design</option>
+                    <option value="Cooking">Cooking</option>
+                    <option value="Photography">Photography</option>
+                    <option value="Language Exchange">Language Exchange</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="button" class="submit-btn" onclick="proposeExchange()">Propose Exchange</button>
+        </form>
+
+        <!-- Exchange Details -->
+        <div class="exchange-details" id="exchangeDetails">
+            <h3>Exchange Proposal Summary:</h3>
+            <p id="exchangeSummary"></p>
+        </div>
+    </section>
+
+    <!-- Modal for Success -->
+    <div class="modal" id="exchangeModal">
+        <div class="modal-content">
+            <h3>Exchange Proposal Submitted</h3>
+            <p>Your exchange proposal has been submitted successfully!</p>
+            <button class="close-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function proposeExchange() {
+            // Get values from select inputs
+            const yourSkill = document.getElementById("yourSkill").value;
+            const desiredSkill = document.getElementById("desiredSkill").value;
+
+            // Ensure both skills are selected
+            if (yourSkill && desiredSkill) {
+                // Display exchange details
+                const exchangeDetails = document.getElementById("exchangeDetails");
+                const exchangeSummary = document.getElementById("exchangeSummary");
+                exchangeSummary.textContent = `You are offering "${yourSkill}" in exchange for "${desiredSkill}".`;
+                exchangeDetails.style.display = "block";
+
+                // Show modal
+                const modal = document.getElementById("exchangeModal");
+                modal.style.display = "flex";
+            } else {
+                alert("Please select both a skill to offer and a skill to receive.");
+            }
+        }
+
+        function closeModal() {
+            // Close the modal
+            const modal = document.getElementById("exchangeModal");
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>

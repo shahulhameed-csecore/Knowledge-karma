@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Exchange Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primary-color: #6c63ff;
+            --secondary-color: #333;
+            --light-color: #fff;
+            --dark-color: #222;
+            --accent-color: #f9a826;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-color);
+            color: var(--secondary-color);
+            background-image: url(../Images1/webthon1.webp);background-size: cover;background-attachment: fixed;background-repeat: no-repeat;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--light-color);
+            transition: color 0.3s ease-in-out;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hamburger Menu for Mobile */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-color);
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                background-color: var(--dark-color);
+                top: 60px;
+                right: 0;
+                width: 200px;
+                text-align: right;
+                padding: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../Images1/hero-image.jpg') center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--light-color);
+        }
+
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 1rem 2rem;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 5rem 0;
+            background-color: var(--light-color);
+            text-align: center;
+        }
+
+        .skills h3 {
+            margin-bottom: 3rem;
+            font-size: 2rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            justify-items: center;
+            overflow: hidden;
+            padding: 0 2rem;
+        }
+
+        .skill-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .skill-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .skill-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .skill-card:hover .skill-overlay {
+            opacity: 1;
+        }
+
+        .skill-overlay button {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 0.5rem 1rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .skill-overlay button:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            text-align: center;
+            padding: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <nav class="container">
+            <h1 class="logo">KNOWLEDGE KARMA</h1>
+            <ul class="nav-links">
+                <li><a href="profilepage.html">Profile</a></li>
+                <li><a href="exchange.html">Exchange</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="../Web-Thon1/skill.html">skills</a></li>
+
+            </ul>
+            
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Learn, Teach, and Trade Skills</h2>
+            <p>Join our community to swap your skills, learn something new, and connect with others.</p>
+            <button class="cta-btn"><a href="../Web-Thon1/profilepage.html" style="text-decoration: none;color:white">Get Started</a></button>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills">
+        <h3>Available Skills for Exchange</h3>
+        <div class="skills-grid">
+            <!-- Skill Cards -->
+            <div class="skill-card">
+                <img src="../Images1/guitarwethone.webp" alt="Guitar Lessons" class="skill-image">
+                <h4>Guitar Lessons</h4>
+                <p>Swap your guitar skills for something new!</p>
+                <div class="skill-overlay">
+                    <button>Propose Trade</button>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <img src="../Images1/cookingwebthone.webp" alt="Cooking Classes" class="skill-image">
+                <h4>Cooking Classes</h4>
+                <p>Learn to cook or offer your expertise.</p>
+                <div class="skill-overlay">
+                    <button>Propose Trade</button>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <img src="../Images1/webthon3.jpg" alt="Web Development" class="skill-image">
+                <h4>Web Development</h4>
+                <p>Exchange coding skills and build awesome projects.</p>
+                <div class="skill-overlay">
+                    <button>Propose Trade</button>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <img src="../Images1/yoga webthone.jpg" alt="Yoga" class="skill-image">
+                <h4>Yoga Classes</h4>
+                <p>Teach or learn yoga for a healthier life.</p>
+                <div class="skill-overlay">
+                    <button>Propose Trade</button>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <img src="../Images1/photographywebthone.jpg" alt="Photography" class="skill-image">
+                <h4>Photography</h4>
+                <p>Share photography skills or learn new techniques.</p>
+                <div class="skill-overlay">
+                    <button>Propose Trade</button>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <img src="../Images1/webthonen4.webp" alt="Graphic Design" class="skill-image">
+                <h4>Graphic Design</h4>
+                <p>Create and exchange creative designs.</p>
+                <div class="skill-overlay">
+                    <button>Propose Trade</button>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <img src="../Images1/publicspeakingwebthone.jpg" alt="Public Speaking" class="skill-image">
+                <h4>Public Speaking</h4>
+                <p>Enhance your communication skills.</p>
+                <div class="skill-overlay">
+                    <button>Propose Trade</button>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <img src="../Images1/languagewethone.jpg" alt="Language Exchange" class="skill-image">
+                <h4>Language Exchange</h4>
+                <p>Learn new languages or teach your own.</p>
+                <div class="skill-overlay">
+                    <button>Propose Trade</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 KnowledgeKarma. All Rights Reserved.<br>
+            <a href="../Web-Thon1/about us.html" style="color:white;text-decoration: none;"><big>About us</big></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="../Web-Thon1/community.html"style="color:white;text-decoration: none;"><big>community</big></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="../Web-Thon1/skill.html"style="color:white;text-decoration: none;"><big>skill</big></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="../Web-Thon1/exchange.html"style="color:white;text-decoration: none;"><big>exchange</big></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="../Web-Thon1/seduling.html"style="color:white;text-decoration: none;"><big>schedule</big></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </p>
+    </footer>
+
+    <!-- External JS -->
+    <script>
+        // Hamburger Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Smooth Scroll for Navbar Links
+        document.querySelectorAll('.nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/66e47f6250c10f7a00a98ad1/1i7m937fr';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    
+</body>
+
+</html>

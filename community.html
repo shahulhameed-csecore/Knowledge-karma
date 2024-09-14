@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>community</title>
+    <link rel="stylesheet" href="communitycss.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1>KNOWLEDGE KARMA</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="../Web-Thon1/skill.html">Skills</a></li>
+                <li><a href="../Web-Thon1/profilepage.html">Profile</a></li>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#" class="btn-primary">Join Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <section class="main-section">
+        <div class="search-bar">
+            <input type="text" placeholder="Search for skills..." id="searchSkills">
+            <button onclick="searchSkills()">Search</button>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="card-header">
+                    <img src="../Images1/guitarwethone.webp" alt="Guitar">
+                    <h3>Guitar Lessons</h3>
+                </div>
+                <p>Offered by: <strong>John Doe</strong></p>
+                <p>Category: <span class="category-tag">Music</span></p>
+                <button class="request-btn" onclick="openRequestModal('Guitar Lessons', 'John Doe')">Request Exchange</button>
+            </div>
+
+            <!-- More Skill Cards -->
+        </div>
+    </section>
+
+    <!-- Request Modal -->
+    <div id="request-modal" class="modal">
+        <div class="modal-content animate">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Request Skill Exchange</h2>
+            <form id="request-form">
+                <label for="skill-name">Skill</label>
+                <input type="text" id="skill-name" readonly>
+
+                <label for="offered-by">Offered by</label>
+                <input type="text" id="offered-by" readonly>
+
+                <label for="your-skill">Your Skill</label>
+                <input type="text" id="your-skill" placeholder="What can you offer?" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Write your exchange proposal..." required></textarea>
+
+                <button type="submit">Submit Request</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- <footer>
+        <p>&copy; 2024 Skill Exchange Platform. All rights reserved.</p>
+    </footer> -->
+
+    <script src="communityjs.js"></script>
+</body>
+
+</html>

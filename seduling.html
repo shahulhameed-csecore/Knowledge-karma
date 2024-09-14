@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Schedule Sessions - KnowledgeKarma</title>
+    <link rel="stylesheet" href="secdulingcss.css">
+</head>
+<body style= "background-image: url(../Images1/webthon1.webp) ;background-size: cover;background-attachment: fixed;background-repeat: no-repeat;">
+    <header>
+        <h1>Schedule Your Sessions</h1>
+        <p>Plan your skill exchange sessions quickly, and avoid conflicts.</p>
+    </header>
+
+    <main>
+        <form id="schedule-form">
+            <div class="form-group">
+                <label for="user_id">Your User ID:</label>
+                <input type="number" id="user_id" name="user_id" placeholder="Enter your user ID" required>
+                <span class="tooltip" id="user_id_tooltip">Enter a valid numeric user ID.</span>
+            </div>
+
+            <div class="form-group">
+                <label for="date">Select Date:</label>
+                <input type="date" id="date" name="date" required>
+                <span class="tooltip" id="date_tooltip">Choose a future date for your session.</span>
+            </div>
+
+            <div class="form-group">
+                <label for="time">Select Time:</label>
+                <input type="time" id="time" name="time" required>
+                <span class="tooltip" id="time_tooltip">Sessions are only available from 9:00 AM to 6:00 PM.</span>
+            </div>
+
+            <div class="form-group">
+                <label for="duration">Session Duration:</label>
+                <select id="duration" name="duration" required>
+                    <option value="30">30 minutes</option>
+                    <option value="60">1 hour</option>
+                    <option value="90">1.5 hours</option>
+                    <option value="120">2 hours</option>
+                </select>
+                <span class="tooltip" id="duration_tooltip">Choose how long your session will last.</span>
+            </div>
+
+            <div id="feedback-message"></div>
+
+            <button type="submit">Schedule</button>
+        </form>
+    </main>
+
+    <script src="sedulingjs.js"></script>
+</body>
+</html>

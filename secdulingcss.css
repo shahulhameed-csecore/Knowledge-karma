@@ -1,0 +1,142 @@
+/* Basic styling for the page */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #555;
+}
+
+/* Styling the form */
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+label {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+input[type="number"], input[type="date"], input[type="time"], select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    transition: border 0.3s;
+}
+
+input[type="number"]:focus, input[type="date"]:focus, input[type="time"]:focus, select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Tooltip Styling */
+.tooltip {
+    display: none;
+    position: absolute;
+    left: 105%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+input:focus + .tooltip, select:focus + .tooltip {
+    display: block;
+}
+
+/* Feedback message styling */
+#feedback-message {
+    margin-top: 15px;
+    font-size: 1em;
+    color: #333;
+    display: none;
+}
+
+#feedback-message.success {
+    color: green;
+}
+
+#feedback-message.error {
+    color: red;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    form {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    button {
+        font-size: 1em;
+    }
+
+    .tooltip {
+        left: auto;
+        top: 105%;
+        transform: translateX(-50%);
+    }
+}
