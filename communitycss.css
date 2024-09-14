@@ -1,7 +1,7 @@
 /* General Styling */
 body {
     font-family: 'Arial', sans-serif;
-    background-image: url(../Images1/webthon1.webp);background-repeat: no-repeat;background-size: cover;background-attachment: fixed;
+    background-image: url(webthon1.webp);background-repeat: no-repeat;background-size: cover;background-attachment: fixed;
     margin: 0;
     padding: 0;
 }
